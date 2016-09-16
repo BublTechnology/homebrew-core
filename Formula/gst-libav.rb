@@ -19,6 +19,11 @@ class GstLibav < Formula
     depends_on "gettext"
   end
 
+  devel do
+    url "https://gstreamer.freedesktop.org/src/gst-libav/gst-libav-1.9.1.tar.xz"
+    sha256 "4047f00f89893bb7df9051d0cc6eaba3025f916ae2c621a721764cecaf709021"
+  end
+
   depends_on "pkg-config" => :build
   depends_on "yasm" => :build
   depends_on "gst-plugins-base"

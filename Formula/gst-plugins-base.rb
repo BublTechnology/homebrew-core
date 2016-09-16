@@ -19,6 +19,11 @@ class GstPluginsBase < Formula
     depends_on "libtool" => :build
   end
 
+  devel do
+    url "https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.9.1.tar.xz"
+    sha256 "8309d1660406274a94bd056f8d805fb35b902208fbb76ff8ca705b37d950fdc9"
+  end
+
   depends_on "pkg-config" => :build
   depends_on "gettext"
   depends_on "gstreamer"

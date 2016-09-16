@@ -19,6 +19,11 @@ class GstPluginsUgly < Formula
     depends_on "libtool" => :build
   end
 
+  devel do
+    url "https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.9.1.tar.xz"
+    sha256 "541b2cc3f36b2c19f2afe9dcac1802109e6b092109ac1e09bc9b5c29cf608abc"
+  end
+
   depends_on "pkg-config" => :build
   depends_on "gettext"
   depends_on "gst-plugins-base"

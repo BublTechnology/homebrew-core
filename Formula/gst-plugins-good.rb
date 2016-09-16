@@ -14,6 +14,21 @@ class GstPluginsGood < Formula
     depends_on "check" => :optional
   end
 
+  devel do
+    url "https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.9.1.tar.xz"
+    sha256 "ee79071c8ec28e2f237ca20ff42f16e2e96c0671377d612c918e7309fa953764"
+
+    depends_on "check" => :optional
+
+    # gstosxaudiodeviceprovider.h is missing from the tarball
+    # https://bugzilla.gnome.org/show_bug.cgi?id=766163
+    # https://github.com/GStreamer/gst-plugins-bad/commit/43487482e5c5ec71867acb887d50b8c3f813cd63
+    resource "gstosxaudiodeviceprovider_h" do
+      url "https://raw.githubusercontent.com/GStreamer/gst-plugins-good/1.9.1/sys/osxaudio/gstosxaudiodeviceprovider.h"
+      sha256 "1a072eb0bbd603f0b89294e463531b772654b7e3842e5c5b66e4aba50656886b"
+    end
+  end
+
   bottle do
     sha256 "5e6bf6bbb342160ff6fdd31133b885a77574b201e5ffdcd69f4234e3ae493be5" => :el_capitan
     sha256 "382137a757d26549d2a7da215e44fd71244a89e4a33b1c84c7f7182827d41b3c" => :yosemite
@@ -81,6 +96,8 @@ class GstPluginsGood < Formula
     # https://bugzilla.gnome.org/show_bug.cgi?id=756918
     if MacOS.version == :snow_leopard
       args << "--disable-osx_video"
+    elsif build.devel?
+      resource("gstosxaudiodeviceprovider_h").stage buildpath/"sys/osxaudio"
     end
 
     if build.head?

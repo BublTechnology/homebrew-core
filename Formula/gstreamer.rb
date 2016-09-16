@@ -19,6 +19,11 @@ class Gstreamer < Formula
     depends_on "libtool" => :build
   end
 
+  devel do
+    url "https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.9.1.tar.xz"
+    sha256 "55304a9e1e8fb5ef82b5b246fef2d9a164eeb0466976a3ad19cfae05b8a94159"
+  end
+
   depends_on "pkg-config" => :build
   depends_on "gobject-introspection"
   depends_on "gettext"
